@@ -1,0 +1,56 @@
+PODS:
+  - Alamofire (5.5.0)
+  - AlamofireURLCache5 (0.5.0):
+    - Alamofire (~> 5.2)
+  - Differentiator (4.0.1)
+  - Kingfisher (7.2.0)
+  - ObjectMapper (3.5.3)
+  - RxCocoa (5.1.3):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.1.3):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.3)
+  - SwiftyJSON (4.3.0)
+
+DEPENDENCIES:
+  - AlamofireURLCache5
+  - Kingfisher
+  - ObjectMapper (~> 3.5)
+  - RxCocoa
+  - RxDataSources (~> 4.0)
+  - RxSwift
+  - SwiftyJSON (~> 4.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireURLCache5
+    - Differentiator
+    - Kingfisher
+    - ObjectMapper
+    - RxCocoa
+    - RxDataSources
+    - RxRelay
+    - RxSwift
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  AlamofireURLCache5: b839c7db7c61bf40bdf467896eb587baecafb2c0
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  Kingfisher: 3ac0b75b155cabc0e544877d1a4deea29feece92
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+  RxCocoa: e2ed092d5432e4296aa818021d27de4090ac0354
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxRelay: 5a18c2eb2d68326ebaf0112f80d837ae41b92b97
+  RxSwift: 915abbdfb62214aa89ccd0b194d44fb478019b27
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+
+PODFILE CHECKSUM: 11142e282e95a15d7fb3252be0a3ae73428063ed
+
+COCOAPODS: 1.11.3
