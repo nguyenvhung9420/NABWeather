@@ -18,8 +18,9 @@ class WeatherService {
     public func getWeatherList(byCity city: String, completion: @escaping ApiCompletion<[WeatherItem]>, failure: @escaping (RequestError)->Void) {
         var url: URL?
         var currentLocation: CLLocation?
+        let metric = UserDefaults.standard.string(forKey: Constant.metricKey) ?? "metric"
         if city != "" {
-            guard let cityUrl = RequestURL(type: .weatherByCity).getURL(params: [city]) else {
+            guard let cityUrl = RequestURL(type: .weatherByCity).getURL(params: [city], metricType: metric) else {
                 print("Failed to get url with city: \(city)")
                 failure(RequestError(code: "", message: "Unable to get weather of this city.", error: nil))
                 return

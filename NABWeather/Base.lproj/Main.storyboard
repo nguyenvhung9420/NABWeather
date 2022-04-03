@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mpr-dR-scN" userLabel="ListCollectionView">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Rl3-jC-fRF">
                                     <size key="itemSize" width="128" height="128"/>
@@ -44,15 +44,21 @@
                             <constraint firstItem="Mpr-dR-scN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5gl-0g-3lM"/>
                             <constraint firstItem="Mpr-dR-scN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hcY-j3-Qb5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mpr-dR-scN" secondAttribute="trailing" id="ljC-Sa-Uzw"/>
-                            <constraint firstAttribute="bottom" secondItem="Mpr-dR-scN" secondAttribute="bottom" constant="34" id="zv9-yd-Nvg"/>
+                            <constraint firstAttribute="bottom" secondItem="Mpr-dR-scN" secondAttribute="bottom" id="zv9-yd-Nvg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7QF-D5-uQO"/>
                     <connections>
                         <outlet property="listingCollectionView" destination="Mpr-dR-scN" id="drT-NT-436"/>
+                        <outlet property="searchBarView" destination="m4j-BL-cMm" id="oag-OF-enW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <searchBar contentMode="redraw" id="m4j-BL-cMm">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
             </objects>
             <point key="canvasLocation" x="1010.144927536232" y="103.79464285714285"/>
         </scene>

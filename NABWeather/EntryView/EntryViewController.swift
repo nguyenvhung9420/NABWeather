@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SwiftUI
 
 class EntryViewController: UIViewController {
     
@@ -20,13 +21,29 @@ class EntryViewController: UIViewController {
     
     private var items: [WeatherItem] = []
     
+    private let searchController = UISearchController(searchResultsController: nil)
     
+    @IBOutlet var searchBarView: UISearchBar!
     private var selectedIndex = 0
     
     override func viewDidLoad() {
-        super.viewDidLoad() 
+        super.viewDidLoad()
+        
+        UserDefaults.standard.set("imperial", forKey: Constant.metricKey)
         prepareCollectionViewCell()
         fetchWeatherList()
+        
+        self.title = Constant.beginningCityName.capitalized
+        navigationController?.navigationBar.prefersLargeTitles = true
+        prepareSearchController()
+        
+        var buttonLabel = ""
+        if UserDefaults.standard.string(forKey: Constant.metricKey) == "imperial" {
+            buttonLabel = "°F"
+        } else {
+            buttonLabel = "°C"
+        }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: buttonLabel, style: .plain, target: self, action: #selector(displayActionSheet))
     }
     
     private func fetchWeatherList() {
@@ -62,6 +79,16 @@ class EntryViewController: UIViewController {
         listingCollectionView.setCollectionViewLayout(layout, animated: true)
         listingCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16)
         listingCollectionView.reloadData()
+    }
+    
+    private func prepareSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search city, like 'Paris'"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        searchController.delegate = self
+
     }
 }
 
@@ -104,5 +131,76 @@ extension EntryViewController: UICollectionViewDelegate, UICollectionViewDataSou
        
         let screenWidth = (UIScreen.main.bounds.width - 32) / 2 - 8
         return CGSize(width: screenWidth, height: screenWidth)
+    }
+}
+
+extension EntryViewController: UISearchResultsUpdating, UISearchControllerDelegate {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        if (searchBar.text ?? "").count < 3 { return }
+        self.title = (searchBar.text ?? "")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.viewModel.getWeatherList(count: 10, city: searchBar.text ?? "", failure: { error in
+                if error.message.isEmpty { return }
+                self.showToast(message: error.message.uppercased(), font: .systemFont(ofSize: 11.0, weight: .semibold))
+            })
+        }
+    }
+    
+    func showToast(message : String, font: UIFont) {
+        let frame = CGRect(x: 16,
+                           y:self.view.frame.size.height - 100,
+                           width: self.view.frame.size.width - 32,
+                           height: 35)
+        let toastLabel = UILabel(frame: frame)
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = font
+        toastLabel.textAlignment = .center;
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 2.0, delay: 1, options: .curveEaseOut, animations: {
+             toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
+    }
+    
+    @objc func displayActionSheet(_ sender: Any) {
+          
+        let optionMenu = UIAlertController(title: nil, message: "Choose Temperature Option", preferredStyle: .actionSheet)
+             
+        let deleteAction = UIAlertAction(title: "Imperial °F", style: .default, handler: { action in
+            UserDefaults.standard.set("imperial", forKey: Constant.metricKey)
+            self.rerenderButtonTemperature()
+        })
+        let saveAction = UIAlertAction(title: "Metric °C", style: .default, handler: { action in
+            UserDefaults.standard.set("metric", forKey: Constant.metricKey)
+            self.rerenderButtonTemperature()
+        })
+             
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+             
+        optionMenu.addAction(deleteAction)
+        optionMenu.addAction(saveAction)
+        optionMenu.addAction(cancelAction)
+        
+        self.present(optionMenu, animated: true, completion: nil)
+        
+    }
+    
+    private func rerenderButtonTemperature() {
+        if UserDefaults.standard.string(forKey: Constant.metricKey) == "imperial" {
+            navigationItem.rightBarButtonItem?.title = "°F"
+        } else {
+            navigationItem.rightBarButtonItem?.title = "°C"
+        }
+        viewModel.getWeatherList(count: 10, city: "saigon", failure: { error in
+            print("error = \(error.message)")
+        })
     }
 }
