@@ -21,6 +21,11 @@ class RequestError: Error {
     }
 }
 
+enum MetricType: String  {
+    case metric = "metric"
+    case imperial = "imperial"
+}
+
 class RequestURL {
     var requestType: RequestURLEnum?
     
@@ -29,17 +34,19 @@ class RequestURL {
     }
     
     enum RequestURLEnum: String {
-       case baseWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast/daily?%@appid=60c6fbeb4b93ac653c492ba806fc346d&units=metric"
-       case weatherByCity = "https://api.openweathermap.org/data/2.5/forecast/daily?q=%@&cnt=7&appid=60c6fbeb4b93ac653c492ba806fc346d&units=metric"
-       case weatherByLatLong = "https://api.openweathermap.org/data/2.5/forecast/daily?lat=%@&lon=%@&cnt=7&appid=60c6fbeb4b93ac653c492ba806fc346d&units=metric"
-       case weatherIcon = "https://openweathermap.org/img/wn/%@@2x.png"
+        case baseWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast/daily?%@appid=%@&units=metric"
+        case weatherByCity = "https://api.openweathermap.org/data/2.5/forecast/daily?q=%@&cnt=7&appid=%@&units=metric"
+        case weatherIcon = "https://openweathermap.org/img/wn/%@@2x.png"
+        case weatherByLatLong = "https://api.openweathermap.org/data/2.5/forecast/daily?lat=%@&lon=%@&cnt=7&appid=%@&units=metric"
     }
     
-    func getURL(params: [String] = [])  -> URL? {
+    func getURL(params: [String] = [], metricType: MetricType = .metric)  -> URL? {
+        let apiKey = Constant.openWeatherApiKey
         if params.count >= 1 {
             switch self.requestType {
             case .weatherByCity, .weatherIcon:
-                let str = String(format: self.requestType?.rawValue ?? "", params[0])
+                let str = String(format: self.requestType?.rawValue ?? "", params[0], apiKey)
+                print(str)
                 return URL(string: str)
             case .weatherByLatLong:
                 if !(params.count >= 2) {
@@ -47,7 +54,8 @@ class RequestURL {
                 }
                 let lat = params[0]
                 let long = params[1]
-                let str = String(format: self.requestType?.rawValue ?? "", lat, long)
+                let str = String(format: self.requestType?.rawValue ?? "", lat, long, apiKey)
+                print(str)
                 return URL(string: str)
             default:
                 return nil

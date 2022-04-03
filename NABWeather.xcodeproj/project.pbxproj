@@ -28,6 +28,7 @@
 		ABF0009027F8A4FC0023A9AF /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF0008D27F8A4FC0023A9AF /* LocationFetcher.swift */; };
 		ABF0009227F8A52C0023A9AF /* RequestModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF0009127F8A52C0023A9AF /* RequestModels.swift */; };
 		ABF0009427F8A5B00023A9AF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF0009327F8A5B00023A9AF /* Extensions.swift */; };
+		ABF0009627F93BF10023A9AF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF0009527F93BF10023A9AF /* Constants.swift */; };
 		F28E5077BC9E9FF39CBFE12A /* Pods_NABWeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E1929EE7E8F45A0CFFC7B04 /* Pods_NABWeatherTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		ABF0008D27F8A4FC0023A9AF /* LocationFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 		ABF0009127F8A52C0023A9AF /* RequestModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModels.swift; sourceTree = "<group>"; };
 		ABF0009327F8A5B00023A9AF /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		ABF0009527F93BF10023A9AF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AC6035CD4E8B251948ED4DE0 /* Pods-NABWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NABWeather.release.xcconfig"; path = "Target Support Files/Pods-NABWeather/Pods-NABWeather.release.xcconfig"; sourceTree = "<group>"; };
 		B1E51C9BAC7F56C4F41828C4 /* Pods_NABWeather_NABWeatherUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NABWeather_NABWeatherUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E28D45320BDC631201DDE021 /* Pods-NABWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NABWeather.debug.xcconfig"; path = "Target Support Files/Pods-NABWeather/Pods-NABWeather.debug.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				AB3E04C527F8298B00165938 /* LaunchScreen.storyboard */,
 				AB3E04C827F8298B00165938 /* Info.plist */,
 				AB3E04C027F8298A00165938 /* NABWeather.xcdatamodeld */,
+				ABF0009527F93BF10023A9AF /* Constants.swift */,
 			);
 			path = NABWeather;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				ABF0009227F8A52C0023A9AF /* RequestModels.swift in Sources */,
 				AB3E04EC27F82BC800165938 /* ListingCollectionViewCell.swift in Sources */,
 				AB3E04F127F8A28700165938 /* EntryViewModel.swift in Sources */,
+				ABF0009627F93BF10023A9AF /* Constants.swift in Sources */,
 				ABF0009427F8A5B00023A9AF /* Extensions.swift in Sources */,
 				ABF0008F27F8A4FC0023A9AF /* Network.swift in Sources */,
 				AB3E04B827F8298A00165938 /* AppDelegate.swift in Sources */,

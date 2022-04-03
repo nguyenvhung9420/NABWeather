@@ -43,8 +43,8 @@
                         <constraints>
                             <constraint firstItem="Mpr-dR-scN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5gl-0g-3lM"/>
                             <constraint firstItem="Mpr-dR-scN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hcY-j3-Qb5"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Mpr-dR-scN" secondAttribute="bottom" id="jHF-3d-wnD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mpr-dR-scN" secondAttribute="trailing" id="ljC-Sa-Uzw"/>
+                            <constraint firstAttribute="bottom" secondItem="Mpr-dR-scN" secondAttribute="bottom" constant="34" id="zv9-yd-Nvg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7QF-D5-uQO"/>

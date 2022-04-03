@@ -21,17 +21,17 @@ class EntryViewController: UIViewController {
     private var items: [WeatherItem] = []
     
     
+    private var selectedIndex = 0
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        super.viewDidLoad() 
+        prepareCollectionViewCell()
         fetchWeatherList()
-        
-        // Do any additional setup after loading the view.
     }
     
     private func fetchWeatherList() {
         
-        viewModel.getWeatherList(failure: { error in
+        viewModel.getWeatherList(count: 10, city: "saigon", failure: { error in
             print("error = \(error.message)")
         })
         
@@ -41,21 +41,9 @@ class EntryViewController: UIViewController {
             .subscribe(
                 onNext: { [weak self] items in
                     guard let self = self else { return }
-                    
-                    
-                    print("items = \(items)")
+                     
                     self.items  = items
-//                    self.productTableView.reloadData {
-//                        self.productTableView.finishInfiniteScroll()
-//                    }
-//                    self.tableViewFooter?.isHidden = true
-//                    self.refreshControl.endRefreshing()
-//                    switch self.viewModel.selectedTabTypeData.value {
-//                    case .all:
-//                        self.productLabel.text = "\("_insights".localized()) (\(self.viewModel.insightResponse.isOffline ? response.count.string : self.viewModel.insightResponse.totalCount))".uppercased()
-//                    case .popular:
-//                        self.productLabel.text = "\("_insights".localized()) (\(self.viewModel.insightResponse.isOffline ? response.count : self.viewModel.insightResponse.items.count))".uppercased()
-//                    }
+                    self.listingCollectionView.reloadData()
                     
                 }, onError: { [weak self] error in
                     print("error when subscribe = \(error)")
@@ -64,28 +52,57 @@ class EntryViewController: UIViewController {
     }
     
     private func prepareCollectionViewCell () {
-        let layout = UICollectionViewLayout()
-        listingCollectionView.register(ListingCollectionViewCell.self, forCellWithReuseIdentifier: collectionCellId)
+        let layout = UICollectionViewFlowLayout()
+                let screenWidth = (UIScreen.main.bounds.width - 32) / 2 - 8
+        layout.itemSize = CGSize(width: screenWidth, height: screenWidth)
         listingCollectionView.delegate = self
         listingCollectionView.dataSource = self
-        listingCollectionView.setCollectionViewLayout(layout, animated: true, completion: nil)
+        listingCollectionView.register(UINib(nibName: "ListingCollectionViewCell",
+                                             bundle: nil), forCellWithReuseIdentifier: collectionCellId)
+        listingCollectionView.setCollectionViewLayout(layout, animated: true)
+        listingCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16)
+        listingCollectionView.reloadData()
     }
-
 }
 
-extension EntryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension EntryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("items.count = \(items.count)")
         return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.collectionCellId, for: indexPath) as! ListingCollectionViewCell
+        print("cell.makeViews")
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.collectionCellId, for: indexPath) as? ListingCollectionViewCell else { return UICollectionViewCell() }
         cell.makeViews(weatherItem: items[indexPath.item])
+        print("cell.makeViews")
         return cell
     }
     
-     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 16
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedIndex = indexPath.item
+        listingCollectionView.performBatchUpdates( {
+            self.listingCollectionView.reloadSections(IndexSet(integer: 0))
+        }, completion: { (finished:Bool) -> Void in
+        })
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if indexPath.item == selectedIndex {
+            let height = (view.frame.width) * 9 / 16
+            return CGSize(width: view.frame.width - 32, height: (UIScreen.main.bounds.width - 32) / 2 - 8)
+        }
+        
+       
+        let screenWidth = (UIScreen.main.bounds.width - 32) / 2 - 8
+        return CGSize(width: screenWidth, height: screenWidth)
+    }
 }

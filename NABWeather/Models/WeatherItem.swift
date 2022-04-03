@@ -45,12 +45,25 @@ class WeatherItem: Mappable {
     
     var dateString: String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "EEE, dd MMM, yyyy"
+        formatter.dateFormat = "dd MMM, yyyy"
+        return formatter.string(from: self.date)
+    }
+    
+    var weekday: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE"
+        return formatter.string(from: self.date)
+    }
+    
+    var fullDateString: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, dd MMM, yyyy"
         return formatter.string(from: self.date)
     }
     
     var averageTempString: String {
-        return String(format: "%.2f°C", self.avgTemp?.day ?? 0.0)
+        return String(format: "%.0f°C", self.avgTemp?.day ?? 0.0)
+//        return String(format: "%.2f°C", self.avgTemp?.day ?? 0.0)
     }
 }
 
