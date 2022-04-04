@@ -146,6 +146,7 @@
 		AB3E04B627F8298A00165938 /* NABWeather */ = {
 			isa = PBXGroup;
 			children = (
+				AB7866FC27FB5C59009F3382 /* Helpers */,
 				ABF0008A27F8A4F20023A9AF /* Service */,
 				ABF0008727F8A3F00023A9AF /* Models */,
 				ABF0008527F8A3D60023A9AF /* EntryView */,
@@ -156,7 +157,6 @@
 				AB3E04C527F8298B00165938 /* LaunchScreen.storyboard */,
 				AB3E04C827F8298B00165938 /* Info.plist */,
 				AB3E04C027F8298A00165938 /* NABWeather.xcdatamodeld */,
-				ABF0009527F93BF10023A9AF /* Constants.swift */,
 			);
 			path = NABWeather;
 			sourceTree = "<group>";
@@ -176,6 +176,15 @@
 				AB3E04DD27F8298B00165938 /* NABWeatherUITestsLaunchTests.swift */,
 			);
 			path = NABWeatherUITests;
+			sourceTree = "<group>";
+		};
+		AB7866FC27FB5C59009F3382 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				ABF0009327F8A5B00023A9AF /* Extensions.swift */,
+				ABF0009527F93BF10023A9AF /* Constants.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		ABF0008527F8A3D60023A9AF /* EntryView */ = {
@@ -200,7 +209,6 @@
 		ABF0008727F8A3F00023A9AF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				ABF0009327F8A5B00023A9AF /* Extensions.swift */,
 				AB3E04EE27F82F9400165938 /* WeatherItem.swift */,
 			);
 			path = Models;
