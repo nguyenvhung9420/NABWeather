@@ -8,7 +8,14 @@
 import Foundation
 import RxCocoa
 
-class EntryViewModel {
+protocol EntryViewModelProtocol {
+    var weatherItems : BehaviorRelay<[WeatherItem]> { get set }
+    var currentCityString: BehaviorRelay<String> { get set }
+    
+    func getWeatherList(count: Int, city: String, failure: ((RequestError)->Void)?)
+}
+
+class EntryViewModel: EntryViewModelProtocol {
     
     var weatherItems : BehaviorRelay<[WeatherItem]> = BehaviorRelay(value: [])
     var currentCityString: BehaviorRelay<String> = BehaviorRelay(value: "")

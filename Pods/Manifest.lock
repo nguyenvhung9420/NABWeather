@@ -5,6 +5,8 @@ PODS:
   - Differentiator (4.0.1)
   - Kingfisher (7.2.0)
   - ObjectMapper (3.5.3)
+  - RxBlocking (5.1.3):
+    - RxSwift (~> 5)
   - RxCocoa (5.1.3):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -15,15 +17,19 @@ PODS:
   - RxRelay (5.1.3):
     - RxSwift (~> 5)
   - RxSwift (5.1.3)
+  - RxTest (5.1.3):
+    - RxSwift (~> 5)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - AlamofireURLCache5
   - Kingfisher
   - ObjectMapper (~> 3.5)
+  - RxBlocking
   - RxCocoa
   - RxDataSources (~> 4.0)
   - RxSwift
+  - RxTest
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
@@ -33,10 +39,12 @@ SPEC REPOS:
     - Differentiator
     - Kingfisher
     - ObjectMapper
+    - RxBlocking
     - RxCocoa
     - RxDataSources
     - RxRelay
     - RxSwift
+    - RxTest
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -45,12 +53,14 @@ SPEC CHECKSUMS:
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   Kingfisher: 3ac0b75b155cabc0e544877d1a4deea29feece92
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+  RxBlocking: 5aed110d3996c0a4b07340810b9ba230fa70df5c
   RxCocoa: e2ed092d5432e4296aa818021d27de4090ac0354
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxRelay: 5a18c2eb2d68326ebaf0112f80d837ae41b92b97
   RxSwift: 915abbdfb62214aa89ccd0b194d44fb478019b27
+  RxTest: 937ba521d3f6dca7db49f76cd5d372cfce6091cb
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 11142e282e95a15d7fb3252be0a3ae73428063ed
+PODFILE CHECKSUM: 6150912110cb88571c2cc0fe7dd6fd507e076dc4
 
 COCOAPODS: 1.11.3

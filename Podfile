@@ -16,7 +16,10 @@ target 'NABWeather' do
 
   target 'NABWeatherTests' do
     inherit! :search_paths
-    # Pods for testing
+    # Pods for testing:
+    pod 'RxSwift'
+    pod 'RxBlocking'
+    pod 'RxTest'
   end
 
   target 'NABWeatherUITests' do

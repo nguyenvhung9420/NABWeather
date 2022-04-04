@@ -19,6 +19,11 @@ class WeatherItem: Mappable {
     
     init() {}
     
+    convenience init(id: Int) {
+        self.init()
+        self.dt = id
+    }
+    
     required init?(map: Map) {}
     
     func mapping(map: Map) {
@@ -62,9 +67,16 @@ class WeatherItem: Mappable {
     }
     
     var averageTempString: String {
-        return String(format: "%.0f°C", self.avgTemp?.day ?? 0.0)
-//        return String(format: "%.2f°C", self.avgTemp?.day ?? 0.0)
+        let unit = UserDefaults.standard.string(forKey: "metric")
+        let formatString = "%.0f°\(unit == "metric" ? "C" : "F")"
+        return String(format: formatString, self.avgTemp?.day ?? 0.0)
     }
+}
+
+extension WeatherItem: Equatable {
+    static func == (lhs: WeatherItem, rhs: WeatherItem) -> Bool {
+        return lhs.dt == rhs.dt
+    } 
 }
 
 class Temperature: Mappable {

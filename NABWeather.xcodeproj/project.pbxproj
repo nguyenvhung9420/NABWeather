@@ -25,7 +25,6 @@
 		AB3E04F127F8A28700165938 /* EntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3E04F027F8A28700165938 /* EntryViewModel.swift */; };
 		ABF0008E27F8A4FC0023A9AF /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF0008B27F8A4FC0023A9AF /* WeatherService.swift */; };
 		ABF0008F27F8A4FC0023A9AF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF0008C27F8A4FC0023A9AF /* Network.swift */; };
-		ABF0009027F8A4FC0023A9AF /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF0008D27F8A4FC0023A9AF /* LocationFetcher.swift */; };
 		ABF0009227F8A52C0023A9AF /* RequestModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF0009127F8A52C0023A9AF /* RequestModels.swift */; };
 		ABF0009427F8A5B00023A9AF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF0009327F8A5B00023A9AF /* Extensions.swift */; };
 		ABF0009627F93BF10023A9AF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF0009527F93BF10023A9AF /* Constants.swift */; };
@@ -76,7 +75,6 @@
 		AB3E04F027F8A28700165938 /* EntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewModel.swift; sourceTree = "<group>"; };
 		ABF0008B27F8A4FC0023A9AF /* WeatherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		ABF0008C27F8A4FC0023A9AF /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		ABF0008D27F8A4FC0023A9AF /* LocationFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 		ABF0009127F8A52C0023A9AF /* RequestModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModels.swift; sourceTree = "<group>"; };
 		ABF0009327F8A5B00023A9AF /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		ABF0009527F93BF10023A9AF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -211,7 +209,6 @@
 		ABF0008A27F8A4F20023A9AF /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				ABF0008D27F8A4FC0023A9AF /* LocationFetcher.swift */,
 				ABF0008C27F8A4FC0023A9AF /* Network.swift */,
 				ABF0008B27F8A4FC0023A9AF /* WeatherService.swift */,
 				ABF0009127F8A52C0023A9AF /* RequestModels.swift */,
@@ -262,6 +259,7 @@
 				AB3E04C927F8298B00165938 /* Sources */,
 				AB3E04CA27F8298B00165938 /* Frameworks */,
 				AB3E04CB27F8298B00165938 /* Resources */,
+				2BD4EB6D89BBA1A2C4DF0B57 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -382,6 +380,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NABWeather/Pods-NABWeather-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		2BD4EB6D89BBA1A2C4DF0B57 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NABWeatherTests/Pods-NABWeatherTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NABWeatherTests/Pods-NABWeatherTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NABWeatherTests/Pods-NABWeatherTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7668726445551517DA975872 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -474,7 +489,6 @@
 			files = (
 				ABF0008E27F8A4FC0023A9AF /* WeatherService.swift in Sources */,
 				AB3E04C227F8298A00165938 /* NABWeather.xcdatamodeld in Sources */,
-				ABF0009027F8A4FC0023A9AF /* LocationFetcher.swift in Sources */,
 				AB3E04BC27F8298A00165938 /* EntryViewController.swift in Sources */,
 				ABF0009227F8A52C0023A9AF /* RequestModels.swift in Sources */,
 				AB3E04EC27F82BC800165938 /* ListingCollectionViewCell.swift in Sources */,
