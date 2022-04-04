@@ -70,14 +70,17 @@ class EntryViewController: UIViewController {
     
     private func prepareCollectionViewCell () {
         let layout = UICollectionViewFlowLayout()
-                let screenWidth = (UIScreen.main.bounds.width - 32) / 2 - 8
+        let screenWidth = (UIScreen.main.bounds.width - Constant.defaultInsetVal*2) / 2 - Constant.defaultInsetVal/2
         layout.itemSize = CGSize(width: screenWidth, height: screenWidth)
         listingCollectionView.delegate = self
         listingCollectionView.dataSource = self
         listingCollectionView.register(UINib(nibName: "ListingCollectionViewCell",
                                              bundle: nil), forCellWithReuseIdentifier: collectionCellId)
         listingCollectionView.setCollectionViewLayout(layout, animated: true)
-        listingCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16)
+        listingCollectionView.contentInset = UIEdgeInsets(top: 0,
+                                                          left: Constant.defaultInsetVal,
+                                                          bottom: Constant.defaultInsetVal,
+                                                          right: Constant.defaultInsetVal)
         listingCollectionView.reloadData()
     }
     
@@ -110,7 +113,7 @@ extension EntryViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
+        return Constant.defaultInsetVal
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -122,20 +125,16 @@ extension EntryViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         if indexPath.item == selectedIndex {
-            let height = (view.frame.width) * 9 / 16
-            return CGSize(width: view.frame.width - 32, height: (UIScreen.main.bounds.width - 32) / 2 - 8)
+            return CGSize(width: view.frame.width - Constant.defaultInsetVal*2,
+                          height: (UIScreen.main.bounds.width - Constant.defaultInsetVal*2) / 2 - Constant.defaultInsetVal/2)
         }
-        
-       
-        let screenWidth = (UIScreen.main.bounds.width - 32) / 2 - 8
+        let screenWidth = (UIScreen.main.bounds.width - Constant.defaultInsetVal*2) / 2 - Constant.defaultInsetVal/2
         return CGSize(width: screenWidth, height: screenWidth)
     }
 }
 
 extension EntryViewController: UISearchResultsUpdating, UISearchControllerDelegate {
-    
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         if (searchBar.text ?? "").count < 3 { return }
@@ -147,11 +146,13 @@ extension EntryViewController: UISearchResultsUpdating, UISearchControllerDelega
             })
         }
     }
+}
     
+extension EntryViewController  {
     func showToast(message : String, font: UIFont) {
-        let frame = CGRect(x: 16,
+        let frame = CGRect(x: Constant.defaultInsetVal,
                            y:self.view.frame.size.height - 100,
-                           width: self.view.frame.size.width - 32,
+                           width: self.view.frame.size.width - Constant.defaultInsetVal*2,
                            height: 35)
         let toastLabel = UILabel(frame: frame)
         toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
